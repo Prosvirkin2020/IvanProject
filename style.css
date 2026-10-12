@@ -73,7 +73,7 @@ img {
 .container {
   width: min(1200px, 92%);
   margin-inline: auto;
-  padding: 0 9px;
+  padding: 0 8px;
 }
 
 /* ===== Кнопки ===== */
