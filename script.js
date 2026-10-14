@@ -86,11 +86,10 @@ const burger = document.getElementById('burger');
       const layer = document.getElementById('seasonFx');
       if (reduce || !layer) return;
 
-      // Северное полушарие: зима — дек, янв, фев; осень — сен, окт, ноя
+      // Северное полушарие: зима — дек, янв, фев
       const month = new Date().getMonth(); // 0..11
       let type = null;
       if (month === 11 || month === 0 || month === 1) type = 'snow'; // зима
-      else if (month === 8 || month === 9 || month === 10) type = 'leaf'; // осень
 
       if (!type) return; // весна/лето — без эффекта
 
@@ -127,3 +126,9 @@ const burger = document.getElementById('burger');
       }
       layer.appendChild(frag);
     })();
+
+    // ===== Замедляем фоновое видео в hero =====
+    const heroVideo = document.querySelector('.hero__video');
+    if (heroVideo) {
+      heroVideo.playbackRate = 0.5; // 0.5 — вдвое медленнее обычного
+    }
