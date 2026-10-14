@@ -629,6 +629,9 @@ img {
   height: 280px;
   min-height: 0;
   border-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .gslider__arrow {
@@ -1046,8 +1049,8 @@ img {
   }
 
   .gslider__slide {
-    flex: 0 0 80vw;
-    height: 220px;
+    flex: 0 0 82vw;
+    height: 300px;
   }
 
   .gslider__arrow {
