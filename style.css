@@ -249,6 +249,18 @@ img {
   object-fit: cover;
 }
 
+/* Лёгкая тень поверх видео для читаемости текста */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.35) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.15) 45%, rgba(0, 0, 0, 0) 80%);
+}
+
 .hero__glow {
   z-index: 1;
   position: absolute;
