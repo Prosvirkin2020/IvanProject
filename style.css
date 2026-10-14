@@ -272,8 +272,6 @@ img {
   display: flex;
   align-items: center;
   padding-block: 56px;
-  background:
-    linear-gradient(100deg, rgba(10, 11, 13, .55) 30%, rgba(10, 11, 13, .55) 60%, rgba(10, 11, 13, .35) 100%);
 }
 
 .hero__content {
