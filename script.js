@@ -6,14 +6,37 @@ const burger = document.getElementById('burger');
       burger.setAttribute('aria-expanded', open);
     });
 
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('is-open');
-        burger.setAttribute('aria-expanded', 'false');
+    // ===== Плавная прокрутка к секциям по якорным ссылкам =====
+    const header = document.querySelector('.header');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#' || href.length < 2) return;
+
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+
+        const headerH = header ? header.offsetHeight : 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerH + 1;
+        window.scrollTo({
+          top: Math.max(top, 0),
+          behavior: reduceMotion ? 'auto' : 'smooth'
+        });
+
+        // Закрываем мобильное меню после перехода
+        if (nav) {
+          nav.classList.remove('is-open');
+          if (burger) burger.setAttribute('aria-expanded', 'false');
+        }
 
         // Переключаем активный (подчёркнутый) пункт меню
-        nav.querySelectorAll('a').forEach(l => l.classList.remove('is-active'));
-        link.classList.add('is-active');
+        if (nav && nav.contains(link)) {
+          nav.querySelectorAll('a').forEach(l => l.classList.remove('is-active'));
+          link.classList.add('is-active');
+        }
       });
     });
 
